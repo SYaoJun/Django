@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    {% if not_found %}
+        <h2>{{ not_found }}</h2>
+    {% else %}
+{#        {{ user_name }}#}
+        <div class="card" style="width: 18rem;">
+            <img src="{{ user_name.avatar_url }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ user_name.name }}</h5>
+                <p class="card-text">location: {{ user_name.location }}</p>
+                <p class="card-text">followers: {{ user_name.followers }}</p>
+
+            </div>
+
+        </div>
+    {% endif %}
+
+
+{% endblock %}

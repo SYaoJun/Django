@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div class="jumbotron">
+  <h1 class="display-4">快速入门Django</h1>
+  <p class="lead">从入门到放弃</p>
+  <a class="btn btn-primary btn-lg" href="{% url 'home' %}" role="button">Learn more</a>
+</div>
+    <div class="container">
+
+        <div class="row">
+            {% for x in api %}
+                <div class="col-sm">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ x.avatar_url }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ x.login }}</h5>
+                        <p class="card-text">{{ x.login }}的github</p>
+                        <a href="{{ x.html_url }}" class="btn btn-primary">访问</a>
+                    </div>
+
+                </div>
+                    <br>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+{#    <ul>#}
+{#        {% for x in api %}#}
+{#            <li>#}
+{#                {{ x }}#}
+{#            </li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
+
+{% endblock %}
