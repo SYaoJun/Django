@@ -1,12 +1,15 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 import requests
 import json
+
 
 def home(request):
     api_json = requests.get('https://api.github.com/users?since=0')
     api = json.loads(api_json.content)
     return render(request, 'home.html', {"api": api})
-    #render用来打开html文件，对文件进行渲染。交给wsgi中的socket
+    # render用来打开html文件，对文件进行渲染。交给wsgi中的socket
+
 
 def user(request):
     if request.method == 'POST':
@@ -17,6 +20,7 @@ def user(request):
     else:
         not_found = "请在搜索框输入您要查询的用户..."
         return render(request, 'user.html', {'not_found': not_found})
+
 
 def upload_file(request):
     if request.method == 'POST':
@@ -32,3 +36,16 @@ def upload_file(request):
         print(request.GET)
     return render(request, 'form.html')
 
+
+def login(request):
+    print(request.POST)
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+    if username == "root":
+        return HttpResponse("访问成功")
+    return render(request, 'login.html')
+
+
+def login_ajax(request):
+    xx = request.POST.get("xx")
+    return HttpResponse("xx" + "vv")

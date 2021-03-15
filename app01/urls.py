@@ -6,5 +6,7 @@ urlpatterns = [
     path('user/', views.user, name='user'),
     # 上传文件
     path('upload_file/', views.upload_file),
-
+    # ajax请求数据
+    path('login/', views.login),
+    path('login_ajax/', views.login_ajax),
 ]

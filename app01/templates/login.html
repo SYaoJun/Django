@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/login/" method="POST" enctype="multipart/form-data">
+    用户名：<input type="text" name="username">
+    密码： <input type="text" name="password">
+    <button>提交</button>
+</form>
+<h1>以下是AJAX请求</h1>
+<label >
+    用户名：<input type="text" name="username" id="username">
+</label>
+<label >
+    密码：<input type="text" name="password" id="password">
+</label>
+    <button id="btn">提交</button>
+    <span id="error_msg"></span>
+</body>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+    $('#btn').click(function () {
+        var uname = $('#username').val();
+        var pwd = $('#password').val();
+        $.ajax({
+            url: '/login_ajax/',
+            type: 'post',
+            data:{
+                xx: uname,
+                oo: pwd,
+            },
+            success:function (res){
+                alert("成功");
+                $('#error_msg').text(res);
+            },
+            error: function (){
+                alert("失败");
+            }
+        })
+
+    })
+</script>
+</html>
