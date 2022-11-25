@@ -1,12 +1,13 @@
+from django.urls import re_path
+from . import views
 
-
-from django.contrib import admin
-from django.urls import path,include
-from app01 import views
 urlpatterns = [
-
-    path('admin/', admin.site.urls),
-    path('', include('app01.urls')),
-    # path('home/', views.home),
-
+    re_path(r'^hello', views.hello),
+    re_path('', views.home, name='home'),
+    re_path('user/', views.user, name='user'),
+    # 上传文件
+    re_path('upload_file/', views.upload_file),
+    # ajax请求数据
+    re_path('login/', views.login),
+    re_path('login_ajax/', views.login_ajax),
 ]
